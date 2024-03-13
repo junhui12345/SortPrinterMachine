@@ -43,12 +43,6 @@ public class Main {
 
 interface Sort {
    void sort(List<Integer> nums);
-
-    default void swap(List<Integer> nums, int x, int y) {
-        int temp = nums.get(x);
-        nums.set(x, nums.get(y));
-        nums.set(y, temp);
-    }
 }
 
 class BubbleSort implements Sort {
@@ -62,7 +56,9 @@ class BubbleSort implements Sort {
                 int x = nums.get(j);
                 int y = nums.get(j + 1);
                 if(x > y) {
-                    swap(nums, j, j+1);
+                    int temp = nums.get(j);
+                    nums.set(j, nums.get(j+1));
+                    nums.set(j+1, temp);
                 }
             }
         }
@@ -83,7 +79,9 @@ class SelectionSort implements Sort {
                 }
             }
 
-            swap(nums, MINIDX, i);
+            int temp = nums.get(MINIDX);
+            nums.set(MINIDX, nums.get(i));
+            nums.set(i, temp);
         }
     }
 }
