@@ -54,8 +54,11 @@ interface Sort {
 class BubbleSort implements Sort {
     @Override
     public void sort(List<Integer> nums) {
+        //가장 큰 요소를 맨 끝으로 이동
+        //첫 번째 반복 후에는 배열의 마지막 요소가 최댓값이므로 더 이상 비교할 필요가 없음, 이후 반복
         for (int i = 0; i < nums.size(); i++) {
-            for (int j = 0; j < nums.size()-1; j++) {
+            //nums.size()-1-i; 마지막에 위치한 정렬된 요소를 확인하지 않게..
+            for (int j = 0; j < nums.size()-1-i; j++) {
                 int x = nums.get(j);
                 int y = nums.get(j + 1);
                 if(x > y) {
